@@ -1,38 +1,118 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  /* background-image: url(./images/marjan-blan-marjanblan-_kUxT8WkoeY-unsplash.jpeg); */
+  background-color: linear-gradient(120deg, #5f57d1, #c065c0);;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.container {
+  position: absolute;
+  top: 7%;
+  right: 30%;
+  height: 85vh;
+  width: 40vw;
+  background: rgba(255, 255, 255, 0.40);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(20.0px);
+  -webkit-backdrop-filter: blur(20.0px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.list-title {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-weight: 400;
+  color: #364f6b;
 }
 
-.App-link {
-  color: #61dafb;
+.list-item {
+  height: 6vh;
+  margin: auto;
+  border-radius: 8px;
+  width: 90%;
+  background-color: grey;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.list-text {
+  vertical-align: middle;
+  line-height: 5.6vh;
+  font-size: 1.4rem;
+  color: #f0f0f0;
+  padding-left: 1.2rem;
+}
+.decorated{
+  text-decoration:line-through;
+}
+.check-icon {
+  padding-right: 2rem;
+  vertical-align: middle;
+  line-height: 2vh;
+  cursor: pointer;
+}
+.remove-icon {
+  position: absolute;
+  right: 10%;
+  color: #bb321f;
+}
+
+.add-form {
+  height: 6vh;
+  margin: auto;
+  border-radius: 8px;
+  width: 86.6%;
+  background-color: grey;
+  position: absolute;
+  bottom: 5%;
+  right: 6.5%;
+}
+
+.plus-icon {
+  font-size: 1.4rem;
+  padding-right: 2rem;
+  vertical-align: middle;
+  line-height: 2vh;
+  cursor: pointer;
+
+  /*  */
+  vertical-align: middle;
+  line-height: 5.6vh;
+  font-size: 1.4rem;
+  color: #fafafa;
+  padding-left: 1.2rem;
+}
+
+.add-input {
+
+  background-color: grey;
+  border: none;
+  outline: none;
+
+  vertical-align: middle;
+  line-height: 5.6vh;
+  font-size: 1.4rem;
+  color: #fafafa;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #fafafa;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #fafafa;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #fafafa;
 }

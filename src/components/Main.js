@@ -1,58 +1,82 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Container, Row } from "reactstrap";
 import ListItem from "./ListItem";
-import {BsPlusCircle} from "react-icons/bs"
+import { BsPlusCircle } from "react-icons/bs";
+import data from '../data.json';
 
-class Main extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      listTitle: "List Title",
-      listText: "List Text",
-      listChecked: true,
-      addForm: "Insert new task",
-    };
-    this.toggleIcon = this.toggleIcon.bind(this);
-  }
-
-  toggleIcon() {
-    this.setState({ listChecked: !this.state.listChecked });
-  }
-
+const Main = () => {
+  const [todoList , setTodoList] = useState(data);
+  const [userInput , setUserInput] = useState('');
   
-  render() {
-
-    return (
-      <>
-        <Container className="container">
-          <Row>
-            <Col sm={{ size: 8, offset: 4 }}>
-              <h1 className="list-title">{this.state.listTitle}</h1>
-            </Col>
-          </Row>
-          <Row>
-            <ListItem
-              decoratedClass={this.state.decoratedClass}
-              onClick={this.toggleIcon}
-              listTitle={this.state.listTitle}
-              listText={this.state.listText}
-              listChecked={this.state.listChecked}
-            />
-          </Row>
-          <Row>
-            <Col sm={12}>
-                <form className="add-form">
-                <i className="plus-icon">
-                <BsPlusCircle/>
-                </i>
-                <input className="add-input" placeholder={this.state.addForm} type="text"></input>
-                </form>
-            </Col>
-          </Row>
-        </Container>
-      </>
-    );
+  const handleToggle = (id) => {
+    let toggled = todoList.map((todo) => {
+      return (
+        todo.id === id ? {...todo , complete: !todo.complete} : {...todo}
+      );
+    })
+    setTodoList(toggled);
   }
-}
+  
+  const handleDelete = (id) => {
+    let filteredList = todoList.filter(todo => todo.id !== id)
+    setTodoList(filteredList);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addTask(userInput);
+    setUserInput('')
+  }
+
+  const handleChange = (e) => {
+    let changedValue = e.target.value;
+    setUserInput(changedValue);
+    console.log(userInput);
+  }
+
+  const addTask = () => {
+      let newList = [...todoList]
+      newList = [...newList , {id: todoList.length + 1 , task: userInput , complete: false}]
+      localStorage.setItem('localStorage', newList);
+      setTodoList(newList);
+  }
+
+  return (
+    
+    <>
+      <Container className="container">
+        <Row>
+          <Col sm={{ size: 8, offset: 4 }}>
+            <h1 className="list-title">Todo List</h1>
+          </Col>
+        </Row>
+        <Row>
+          <ListItem
+          handleDelete={handleDelete}
+          todoList={todoList}
+          handleToggle={handleToggle}
+          />
+        </Row>
+        <Row>
+          <Col sm={12}>
+            <form className="add-form">
+              <i className="plus-icon">
+                <BsPlusCircle onClick={(e) => handleSubmit(e)}/>
+              </i>
+              <input
+                className="add-input"
+                placeholder="insert a new Task"
+                type="text"
+                value={userInput}
+                onChange={handleChange}
+                onSubmit={(e) => handleSubmit(e)}
+              ></input>
+            </form>
+          </Col>
+        </Row>
+      </Container>
+    </>
+  );
+};
 
 export default Main;

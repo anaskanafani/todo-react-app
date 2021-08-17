@@ -19,7 +19,6 @@ body {
   position: absolute;
   top: 7%;
   right: 30%;
-  height: 85vh;
   width: 40vw;
   background: rgba(255, 255, 255, 0.40);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -38,7 +37,7 @@ body {
 
 .list-item {
   height: 6vh;
-  margin: auto;
+  margin: 1rem;
   border-radius: 8px;
   width: 90%;
   background-color: grey;
@@ -68,13 +67,11 @@ body {
 
 .add-form {
   height: 6vh;
-  margin: auto;
+  margin: 1rem;
   border-radius: 8px;
-  width: 86.6%;
+  width: 90%;
   background-color: grey;
-  position: absolute;
-  bottom: 5%;
-  right: 6.5%;
+
 }
 
 .plus-icon {
@@ -100,7 +97,7 @@ body {
 
   vertical-align: middle;
   line-height: 5.6vh;
-  font-size: 1.4rem;
+  text-size-adjust: auto;
   color: #fafafa;
 }
 
